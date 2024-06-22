@@ -18,6 +18,12 @@ public class UserRepository : IUserRepository
         return await _dbContext.Users.AsNoTracking().FirstOrDefaultAsync(c => c.Id == id);
     }
 
+    public User Update(User model)
+    {
+        var result = _dbContext.Users.Update(model);
+        return result.Entity;
+    }
+
     public async Task SaveChanges()
     {
         await _dbContext.SaveChangesAsync();
