@@ -1,6 +1,7 @@
 ﻿using Application.RequestModels;
 using Application.Users.Commands;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WebAPI.Controllers;
@@ -15,8 +16,8 @@ public class UsersController : ControllerBase
         _mediator = mediator;
     }
 
-    //[Authorize]
     [HttpPost("{id:long}/earn")]
+    [Authorize]
     public async Task<IActionResult> EarnPoints(long id, [FromBody] EarnPointsRequest request)
     {
         var command = new EarnPointsCommand(id, request.Points);

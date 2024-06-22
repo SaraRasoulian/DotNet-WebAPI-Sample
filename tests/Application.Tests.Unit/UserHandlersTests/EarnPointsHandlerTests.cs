@@ -29,7 +29,7 @@ public class EarnPointsHandlerTests
 
         var userRepository = new Mock<IUserRepository>();
 
-        userRepository.Setup(r => r.GetById(userId))
+        userRepository.Setup(r => r.Get(userId))
                .ReturnsAsync(user);
 
         userRepository.Setup(r => r.Update(user))
@@ -42,7 +42,7 @@ public class EarnPointsHandlerTests
 
         // Assert
         Assert.Equal(updatedUser.PointBalance, result);
-        userRepository.Verify(x => x.GetById(userId), Times.Once);
+        userRepository.Verify(x => x.Get(userId), Times.Once);
         userRepository.Verify(x => x.Update(user), Times.Once);
     }
 }
