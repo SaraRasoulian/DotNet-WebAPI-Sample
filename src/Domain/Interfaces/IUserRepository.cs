@@ -4,7 +4,8 @@ namespace Domain.Interfaces;
 
 public interface IUserRepository
 {
-    Task<User?> GetById(long id);
+    Task<User?> Get(long userId);
+    Task<User?> Get(string userName, string password);
     User Update(User model);
     Task SaveChanges();
 }

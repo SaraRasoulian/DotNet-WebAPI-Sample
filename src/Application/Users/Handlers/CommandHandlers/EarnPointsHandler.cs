@@ -15,7 +15,7 @@ public class EarnPointsHandler : IRequestHandler<EarnPointsCommand, decimal>
 
     public async Task<decimal> Handle(EarnPointsCommand request, CancellationToken cancellationToken)
     {
-        User? user = await _userRepository.GetById(request.UserId);
+        User? user = await _userRepository.Get(request.UserId);
         if (user is null) throw new Exception("User not found");
         
         user.PointBalance += request.Points;

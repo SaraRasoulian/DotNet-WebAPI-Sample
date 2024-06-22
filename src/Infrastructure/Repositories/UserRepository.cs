@@ -13,9 +13,15 @@ public class UserRepository : IUserRepository
         _dbContext = dbContext;
     }
 
-    public async Task<User?> GetById(long id)
+    public async Task<User?> Get(long id)
     {
         return await _dbContext.Users.AsNoTracking().FirstOrDefaultAsync(c => c.Id == id);
+    }
+
+    public async Task<User?> Get(string userName, string password)
+    {
+        return await _dbContext.Users.AsNoTracking().FirstOrDefaultAsync(c => c.UserName.ToLower() == userName.ToLower()
+        && c.Password == password);
     }
 
     public User Update(User model)
