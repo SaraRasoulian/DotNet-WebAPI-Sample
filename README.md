@@ -62,9 +62,16 @@ Content-Type: application/json
   - __Mapster__ for object mapping
 
       
-## Run with Docker
+## Get started
 
-#### 1. Start with Docker compose
+#### 1. Clone the repository
+
+```
+git clone https://github.com/SaraRasoulian/Loyalty-System-API.git
+```
+#### 2. Start with docker compose
+
+Make sure [docker](https://docs.docker.com/get-docker/) is installed on your machine.
 
 Run the following command in project directory:
 
@@ -72,16 +79,29 @@ Run the following command in project directory:
 docker-compose up -d
 ```
 
-Docker compose in this application includes 3 services:
+Docker compose in this project includes 3 services:
 
-- __Web API application__ will be listening at `http://localhost:5000`
+- Web API application will be listening at `http://localhost:5000`
 
-- __Postgres database__ will be listening at `http://localhost:5433`
+- Postgres database will be listening at `http://localhost:5433`
 
-- __PgAdmin4 web interface__ will be listening at `http://localhost:8000`
+- PgAdmin4 web interface will be listening at `http://localhost:8080`
 
 
-#### 2. Run the migrations
+To apply your modified code, you can add build option:
+
+```
+  docker-compose up -d --build
+```
+
+To stop and remove all containers, use the following command:
+
+```
+  docker-compose down
+```
+
+
+#### 3. Run the migrations
 
 Open `Loyalty.sln` file in visual studio, then in package manager console tab, run:
 
