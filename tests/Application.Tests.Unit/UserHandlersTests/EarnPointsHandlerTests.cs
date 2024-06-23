@@ -2,6 +2,7 @@
 using Application.Users.Handlers.CommandHandlers;
 using Domain.Entities;
 using Domain.Interfaces;
+using Microsoft.Extensions.Logging;
 using Moq;
 
 namespace Application.Tests.Unit.UserHandlersTests;
@@ -35,7 +36,9 @@ public class EarnPointsHandlerTests
         userRepository.Setup(r => r.Update(user))
                .Returns(updatedUser);
 
-        var handler = new EarnPointsHandler(userRepository.Object);
+        var logger = new Mock<ILogger<EarnPointsHandler>>();
+
+        var handler = new EarnPointsHandler(userRepository.Object, logger.Object);
 
         // Act
         var result = await handler.Handle(command, default);
