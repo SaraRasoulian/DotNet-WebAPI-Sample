@@ -1,6 +1,41 @@
 ## Loyalty System API
 A simple customer loyalty application. This repository is intended for demonstrating best practices in software development. In real-world applications, these practices should be selected based on the specific requirements of each project.
 
+## Avaliable endpoints
+
+The endpoints can be tested using postman or swagger.
+
+##### Earn points (needs authorization):
+```
+Post    http://localhost:5000/api/users/{id}/earn
+```
+
+###### Input from body:
+```
+Content-Type: application/json
+{
+  "points": 100
+}
+```
+
+----
+
+
+##### Login:
+```
+Post    http://localhost:5000/api/identity/login
+```
+
+###### Input from body:
+```
+Content-Type: application/json
+{
+  "userName": "sara",
+  "password": "123456"
+}
+```
+
+
 ## Technology Stack
   -	ASP.NET Core Web API -v8
   - Entity Framework Core -v8
