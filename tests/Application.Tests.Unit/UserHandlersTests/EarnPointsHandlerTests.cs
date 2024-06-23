@@ -29,12 +29,8 @@ public class EarnPointsHandlerTests
         };
 
         var userRepository = new Mock<IUserRepository>();
-
-        userRepository.Setup(r => r.Get(userId))
-               .ReturnsAsync(user);
-
-        userRepository.Setup(r => r.Update(user))
-               .Returns(updatedUser);
+        userRepository.Setup(r => r.Get(userId)).ReturnsAsync(user);
+        userRepository.Setup(r => r.Update(user)).Returns(updatedUser);
 
         var logger = new Mock<ILogger<EarnPointsHandler>>();
 
@@ -47,5 +43,28 @@ public class EarnPointsHandlerTests
         Assert.Equal(updatedUser.PointBalance, result);
         userRepository.Verify(x => x.Get(userId), Times.Once);
         userRepository.Verify(x => x.Update(user), Times.Once);
+    }
+
+    [Fact]
+    public void EarnPointsHandler_With_Null_User_Throws_Exception()
+    {
+        // Arrange
+        var userId = 1;
+        var command = new EarnPointsCommand(userId, Points: 100);
+
+        User user = null;
+
+        var userRepository = new Mock<IUserRepository>();
+        userRepository.Setup(r => r.Get(userId)).ReturnsAsync(user);
+
+        var logger = new Mock<ILogger<EarnPointsHandler>>();
+
+        var handler = new EarnPointsHandler(userRepository.Object, logger.Object);
+
+        // Act & Assert
+        Assert.ThrowsAsync<Exception>(async () =>
+        {
+            await handler.Handle(command, default);
+        });
     }
 }
