@@ -3,6 +3,7 @@ using Domain.Entities;
 using Domain.Interfaces;
 using MediatR;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
@@ -14,16 +15,20 @@ public class LoginQueryHandler : IRequestHandler<LoginQuery, string?>
 {
     private readonly IConfiguration _config;
     private readonly IUserRepository _userRepository;
-    public LoginQueryHandler(IUserRepository userRepository, IConfiguration config)
+    private readonly ILogger<LoginQueryHandler> _logger;
+    public LoginQueryHandler(IUserRepository userRepository, IConfiguration config, ILogger<LoginQueryHandler> logger)
     {
         _userRepository = userRepository;
         _config = config;
+        _logger = logger;
     }
     public async Task<string?> Handle(LoginQuery request, CancellationToken cancellationToken)
     {
         User? user = await _userRepository.Get(request.UserName, request.Password);
 
         if (user is null) return null;
+
+        _logger.LogInformation("User with id {userId} logged in at {now}", user.Id, DateTime.Now);
 
         return GenerateToken(user);
     }
