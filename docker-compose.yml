@@ -1,0 +1,57 @@
+services:
+
+  # Web API Application
+  loyalty_api:
+    container_name: api_container
+    ports:
+      - "5000:5000"
+    depends_on:
+      - loyalty_postgres_db
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - ConnectionStrings__DefaultConnection=Server=postgres_db_container;Port=5432;Database=LoyaltyDB;Username=postgres;Password=mysecretpassword;
+      - ASPNETCORE_URLS=http://+:5000
+    networks:
+      - loyalty_network
+
+  # PostgreSQL Database 
+  loyalty_postgres_db:
+    container_name: postgres_db_container
+    image: postgres:latest
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: mysecretpassword
+      PGDATA: /data/postgres
+    volumes:
+       - loyalty_postgres_data:/data/postgres
+    ports:
+      - "5433:5432"
+    networks:
+      - loyalty_network
+    restart: unless-stopped
+
+  # PGAdmin User-Interface
+  loyalty_pgadmin:
+    container_name: pgadmin_container
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@gmail.com
+      PGADMIN_DEFAULT_PASSWORD: mysecretpassword
+      PGADMIN_CONFIG_SERVER_MODE: 'False'
+    volumes:
+      - loyalty_pgadmin_data:/var/lib/pgadmin
+    ports:
+      - "8000:80"
+    networks:
+      - loyalty_network
+    restart: unless-stopped
+    
+networks:
+  loyalty_network:
+    driver: bridge
+
+volumes:
+  loyalty_postgres_data:
+  loyalty_pgadmin_data:
