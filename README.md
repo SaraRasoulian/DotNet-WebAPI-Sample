@@ -57,8 +57,9 @@ Content-Type: application/json
   - __xUnit__ for unit and integration testing
   - __Testcontainers__ for integration testing
   - __Moq__ for mocking
-  - __FluentValidation__ for server-side validation
   - __Serilog__ for logging in console and text file
+  - __FluentValidation__ for server-side validation
+  - __FluentAssertions__ for test assertions
   - __MediatR__ for implementing mediator pattern
   - __Mapster__ for object mapping
 
