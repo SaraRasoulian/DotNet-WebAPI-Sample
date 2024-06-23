@@ -1,6 +1,9 @@
-@WebApi_HostAddress = http://localhost:5127
+@WebApi_HostAddress = https://localhost:7120
 
-GET {{WebApi_HostAddress}}/weatherforecast/
-Accept: application/json
+# Earn points
+POST {{WebApi_HostAddress}}/api/users/1/earn
+Content-Type: application/json
 
-###
+{
+    "Points": 100
+}
