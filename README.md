@@ -54,7 +54,8 @@ Content-Type: application/json
   - Docker
 
 #### Nuget Packages
-  - __xUnit__ for unit testing
+  - __xUnit__ for unit and integration testing
+  - __Testcontainers__ for integration testing
   - __Moq__ for mocking
   - __FluentValidation__ for server-side validation
   - __Serilog__ for logging in console and text file
@@ -111,5 +112,8 @@ update-database
 
 This command will generate the database schema in postgres container.
 
+---
+
+Make sure Docker engine is running, before running the integration tests.
 
 
