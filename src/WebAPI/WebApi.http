@@ -1,6 +1,15 @@
 @WebApi_HostAddress = https://localhost:7120
 
-# Earn points
+### Login
+POST {{WebApi_HostAddress}}/api/identity/login
+Content-Type: application/json
+
+{
+  "userName": "sara",
+  "password": "123456"
+}
+
+### Earn points
 POST {{WebApi_HostAddress}}/api/users/1/earn
 Content-Type: application/json
 
