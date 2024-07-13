@@ -1,5 +1,4 @@
-## Loyalty System API
-A simple customer loyalty application.
+## Customer Loyalty Application
 
 This repository is intended for demonstrating best practices in software development. In real-world applications, these practices should be selected based on the specific requirements of each project.
 
@@ -9,7 +8,7 @@ The endpoints can be tested using postman or swagger.
 
 ##### Earn points (needs authorization):
 ```
-Post    http://localhost:5000/api/users/{id}/earn
+Post    http://localhost:5000/api/users/{userId}/earn
 ```
 
 ###### Input from body:
