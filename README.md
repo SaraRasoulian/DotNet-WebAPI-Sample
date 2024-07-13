@@ -102,7 +102,7 @@ Content-Type: application/json
 ```
 git clone https://github.com/SaraRasoulian/Loyalty-System-API.git
 ```
-#### 2. Start with docker compose
+#### 2. Start with Docker compose
 
 Make sure [docker](https://docs.docker.com/get-docker/) is installed on your machine.
 
