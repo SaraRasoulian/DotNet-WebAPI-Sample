@@ -20,9 +20,9 @@ public class IdentityController : ControllerBase
     public async Task<ActionResult> Login([FromBody] LoginRequest request)
     {
         var command = request.Adapt<LoginQuery>();
-        var result = await _mediator.Send(command);
+        var response = await _mediator.Send(command);
 
-        if (result is null) return NoContent();
-        return Ok(result);
+        if (response is null) return NoContent();
+        return Ok(response);
     }
 }

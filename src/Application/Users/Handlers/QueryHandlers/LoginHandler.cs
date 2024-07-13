@@ -11,12 +11,12 @@ using System.Text;
 
 namespace Application.Users.Handlers.QueryHandlers;
 
-public class LoginQueryHandler : IRequestHandler<LoginQuery, string?>
+public class LoginHandler : IRequestHandler<LoginQuery, string?>
 {
     private readonly IConfiguration _config;
     private readonly IUserRepository _userRepository;
-    private readonly ILogger<LoginQueryHandler> _logger;
-    public LoginQueryHandler(IUserRepository userRepository, IConfiguration config, ILogger<LoginQueryHandler> logger)
+    private readonly ILogger<LoginHandler> _logger;
+    public LoginHandler(IUserRepository userRepository, IConfiguration config, ILogger<LoginHandler> logger)
     {
         _userRepository = userRepository;
         _config = config;
