@@ -6,28 +6,17 @@ This repository is intended for demonstrating best practices in software develop
 
 The endpoints can be tested using postman or swagger.
 
-##### Earn points (needs authorization):
-```
-Post    http://localhost:5000/api/users/{userId}/earn
-```
 
-###### Input from body:
-```
-Content-Type: application/json
-{
-  "points": 100
-}
-```
+<details>
+  
+<summary>Login</summary>
 
-----
-
-
-##### Login:
 ```
 Post    http://localhost:5000/api/identity/login
 ```
 
-###### Input from body:
+##### Input from body:
+
 ```
 Content-Type: application/json
 {
@@ -35,6 +24,48 @@ Content-Type: application/json
   "password": "123456"
 }
 ```
+
+</details>
+
+
+<details>
+  
+<summary>Get User</summary>
+
+ <h6>Needs authorization </h6>
+
+```
+GET    http://localhost:5000/api/users/{userId}
+```
+
+
+</details>
+
+
+
+<details>
+  
+<summary>Earn Points</summary>
+
+ <h6>Needs authorization </h6>
+
+```
+Post    http://localhost:5000/api/users/{userId}/earn
+```
+
+##### Input from body:
+
+```
+Content-Type: application/json
+{
+  "points": 100
+}
+```
+
+</details>
+
+
+
 
 
 ## Technology Stack
