@@ -1,5 +1,6 @@
 ## Customer Loyalty Application
 
+This repository is a sample and minimal customer loyalty application API.
 This repository is intended for demonstrating best practices in software development. In real-world applications, these practices should be selected based on the specific requirements of each project.
 
 ## Avaliable endpoints
