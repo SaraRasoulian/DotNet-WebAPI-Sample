@@ -19,10 +19,9 @@ public class IdentityController : ControllerBase
     [HttpPost("login")]
     public async Task<ActionResult> Login([FromBody] LoginRequest request)
     {
-        var command = request.Adapt<LoginQuery>();
-        var response = await _mediator.Send(command);
+        var query = request.Adapt<LoginQuery>();
+        var response = await _mediator.Send(query);
 
-        if (response is null) return NoContent();
         return Ok(response);
     }
 }
