@@ -1,4 +1,4 @@
-## A Web API Application
+## Web API Application
 
 This repository is a sample ASP.NET Core Web API (.NET 8) project.
 
