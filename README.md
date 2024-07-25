@@ -1,7 +1,7 @@
-## Customer Loyalty Application
+## ASP.NETCore Web API Sample
 
-This repository is a sample and minimal customer loyalty application API.
-This repository is intended for demonstrating best practices in software development. In real-world applications, these practices should be selected based on the specific requirements of each project.
+This repository is a sample ASP.NET Core Web API (.NET 8) project.
+
 
 ## Avaliable endpoints
 
