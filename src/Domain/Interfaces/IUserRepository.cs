@@ -4,8 +4,9 @@ namespace Domain.Interfaces;
 
 public interface IUserRepository
 {
-    Task<User?> Get(long userId);
-    Task<User?> Get(string userName, string password);
-    User Update(User model);
-    Task SaveChanges();
+    Task<User?> GetAsync(long userId);
+    Task<User?> GetAsync(string userName, string password);
+    Task<User?> GetFromCacheAsync(long userId);
+    User Update(User user);
+    Task SaveChangesAsync();
 }

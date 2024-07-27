@@ -17,7 +17,7 @@ public class GetUserHandler : IRequestHandler<GetUserQuery, UserResponse>
 
     public async Task<UserResponse> Handle(GetUserQuery request, CancellationToken cancellationToken)
     {
-        var user = await _userRepository.Get(request.UserId);
+        var user = await _userRepository.GetFromCacheAsync(request.UserId);
         return user.Adapt<UserResponse>();
     }
 }

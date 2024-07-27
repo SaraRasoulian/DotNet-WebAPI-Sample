@@ -11,7 +11,7 @@ services:
       context: .
       dockerfile: Dockerfile
     environment:
-      - ConnectionStrings__DefaultConnection=Server=postgres_db_container;Port=5432;Database=LoyaltyDB;Username=postgres;Password=mysecretpassword;
+      - ConnectionStrings__Database=Server=postgres_db_container;Port=5432;Database=CustomerLoyaltyDB;Username=postgres;Password=mysecretpassword;
       - ASPNETCORE_URLS=http://+:5000
     networks:
       - loyalty_network
