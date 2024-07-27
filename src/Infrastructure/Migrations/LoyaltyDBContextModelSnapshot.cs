@@ -9,8 +9,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace Infrastructure.Migrations
 {
-    [DbContext(typeof(LoyaltyDBContext))]
-    partial class LoyaltyDBContextModelSnapshot : ModelSnapshot
+    [DbContext(typeof(CustomerLoyaltyDBContext))]
+    partial class CustomerLoyaltyDBContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
         {

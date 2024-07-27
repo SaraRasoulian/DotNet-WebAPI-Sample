@@ -10,7 +10,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace Infrastructure.Migrations
 {
-    [DbContext(typeof(LoyaltyDBContext))]
+    [DbContext(typeof(CustomerLoyaltyDBContext))]
     [Migration("20240622103841_Initial")]
     partial class Initial
     {

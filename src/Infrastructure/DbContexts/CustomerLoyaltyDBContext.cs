@@ -5,9 +5,9 @@ using System.Reflection;
 
 namespace Infrastructure.DbContexts;
 
-public class LoyaltyDBContext : DbContext
+public class CustomerLoyaltyDBContext : DbContext
 {
-    public LoyaltyDBContext(DbContextOptions<LoyaltyDBContext> options) : base(options) { }
+    public CustomerLoyaltyDBContext(DbContextOptions<CustomerLoyaltyDBContext> options) : base(options) { }
 
     public DbSet<User> Users => Set<User>();
 
@@ -15,7 +15,7 @@ public class LoyaltyDBContext : DbContext
     {
         modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
 
-        // Database Seeding
+        // Seed sample data
         modelBuilder.Entity<User>().HasData(
             new User
             {

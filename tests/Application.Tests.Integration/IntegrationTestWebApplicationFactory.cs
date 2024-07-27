@@ -12,7 +12,7 @@ public class IntegrationTestWebApplicationFactory : WebApplicationFactory<Progra
 {
     private readonly PostgreSqlContainer _dbContainer = new PostgreSqlBuilder()
         .WithImage("postgres:latest")
-        .WithDatabase("LoyaltyDB_Test")
+        .WithDatabase("CustomerLoyaltyDB_Test")
         .WithUsername("postgres")
         .WithPassword("mysecretpassword")
         .Build();
@@ -24,7 +24,7 @@ public class IntegrationTestWebApplicationFactory : WebApplicationFactory<Progra
         using (var scope = Services.CreateScope())
         {
             var scopedServices = scope.ServiceProvider;
-            var cntx = scopedServices.GetRequiredService<LoyaltyDBContext>();
+            var cntx = scopedServices.GetRequiredService<CustomerLoyaltyDBContext>();
 
             await cntx.Database.EnsureCreatedAsync();
         }
@@ -39,14 +39,14 @@ public class IntegrationTestWebApplicationFactory : WebApplicationFactory<Progra
     {
         builder.ConfigureTestServices(services =>
         {
-            var descriptor = services.SingleOrDefault(s => s.ServiceType == typeof(DbContextOptions<LoyaltyDBContext>));
+            var descriptor = services.SingleOrDefault(s => s.ServiceType == typeof(DbContextOptions<CustomerLoyaltyDBContext>));
 
             if (descriptor is not null)
             {
                 services.Remove(descriptor);
             }
 
-            services.AddDbContext<LoyaltyDBContext>(options =>
+            services.AddDbContext<CustomerLoyaltyDBContext>(options =>
             {
                 options.UseNpgsql(_dbContainer.GetConnectionString());
             });
