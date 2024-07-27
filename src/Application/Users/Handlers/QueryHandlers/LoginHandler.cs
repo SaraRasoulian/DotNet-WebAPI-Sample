@@ -24,7 +24,7 @@ public class LoginHandler : IRequestHandler<LoginQuery, string?>
     }
     public async Task<string?> Handle(LoginQuery request, CancellationToken cancellationToken)
     {
-        User? user = await _userRepository.Get(request.UserName, request.Password);
+        User? user = await _userRepository.GetAsync(request.UserName, request.Password);
 
         if (user is null) return null;
 
