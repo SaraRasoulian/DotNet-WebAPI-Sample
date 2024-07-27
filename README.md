@@ -69,7 +69,7 @@ Content-Type: application/json
 
 
 
-## Technology Stack
+## Tech Stack
   -	ASP.NET Core Web API -v8
   - Entity Framework Core -v8
   - TDD (Test-Driven Development)
@@ -81,10 +81,17 @@ Content-Type: application/json
   - Mediator Design pattern
   - JWT (JSON Web Token) for Authentication & Authorization
   - PostgreSQL Database
-  - Database built via Entity framework migrations (code-first approach)
+  - Redis for Caching
   - Docker
 
-#### Nuget Packages
+
+<details>
+
+  
+<summary>Nuget Packages</summary>
+
+ <h4>Here is a list of some of the nuget packages used in this repository :</h4>
+
   - __xUnit__ for unit and integration testing
   - __Testcontainers__ for integration testing
   - __Moq__ for mocking
@@ -93,8 +100,13 @@ Content-Type: application/json
   - __FluentAssertions__ for test assertions
   - __MediatR__ for implementing mediator pattern
   - __Mapster__ for object mapping
+  - __Newtosoft.Json__ for serializing and deserializing objects
+  - __Microsoft.Extensions.Caching.StackExchangeRedis__ for implementing redis cache
+    
 
-      
+</details>
+
+  
 ## Get started
 
 #### 1. Clone the repository
@@ -112,13 +124,15 @@ Run the following command in project directory:
 docker-compose up -d
 ```
 
-Docker compose in this project includes 3 services:
+Docker compose in this project includes 4 services:
 
 - Web API application will be listening at `http://localhost:5000`
 
 - Postgres database will be listening at `http://localhost:5433`
 
 - PgAdmin4 web interface will be listening at `http://localhost:8080`
+ 
+- Redis cache will be listening at `http://localhost:6379`
 
 
 To apply your modified code, you can add build option:
@@ -136,7 +150,7 @@ To stop and remove all containers, use the following command:
 
 #### 3. Run the migrations
 
-Open `Loyalty.sln` file in visual studio, then in package manager console tab, run:
+Open `CustomerLoyalty.sln` file in visual studio, then in package manager console tab, run:
 
 ```
 update-database
