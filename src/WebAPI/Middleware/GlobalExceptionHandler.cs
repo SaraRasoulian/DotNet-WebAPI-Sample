@@ -13,13 +13,10 @@ public class GlobalExceptionHandler : IExceptionHandler
         _logger = logger;
     }
 
-    public async ValueTask<bool> TryHandleAsync(
-        HttpContext httpContext,
-        Exception exception,
+    public async ValueTask<bool> TryHandleAsync(HttpContext httpContext, Exception exception,
         CancellationToken cancellationToken)
     {
-        _logger.LogError(
-            $"An error occurred while processing your request: {exception.Message}");
+        _logger.LogError($"An error occurred while processing your request: {exception.Message}");
 
         var errorResponse = new ErrorResponse
         {
