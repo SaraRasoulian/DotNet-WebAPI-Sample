@@ -79,7 +79,7 @@ Content-Type: application/json
   - Repository Design Pattern
   - CQRS Design Pattern
   - Mediator Design pattern
-  - JWT (JSON Web Token) for Authentication & Authorization
+  - JWT (JSON Web Token)
   - PostgreSQL Database
   - Redis for Caching
   - Docker
@@ -90,7 +90,7 @@ Content-Type: application/json
   
 <summary>Nuget Packages</summary>
 
- <h4>Here is a list of some of the nuget packages used in this repository :</h4>
+ <h4>Here are some of the NuGet packages used in this repository:</h4>
 
   - __xUnit__ for unit and integration testing
   - __Testcontainers__ for integration testing
