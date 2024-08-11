@@ -22,4 +22,18 @@ public class UsersControllerTests : BaseControllerTest
         decimal pointBalance = decimal.Parse(await response.Content.ReadAsStringAsync());
         pointBalance.Should().BeGreaterThan(0);
     }
+
+    [Fact]
+    public async Task Get_Returns_OK()
+    {
+        // Arrange
+        await AuthenticateAsync();
+        var userId = 1;
+
+        // Act
+        var response = await _httpClient.GetAsync("/api/users/" + userId);
+
+        // Assert
+        response.EnsureSuccessStatusCode();
+    }
 }
