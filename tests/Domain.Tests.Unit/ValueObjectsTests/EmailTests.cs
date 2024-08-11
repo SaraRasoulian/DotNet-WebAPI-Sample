@@ -1,6 +1,6 @@
 ﻿using Domain.ValueObjects;
 
-namespace Domain.UnitTests.ValueObjectsTests;
+namespace Domain.Tests.Unit.ValueObjectsTests;
 
 public class EmailTests
 {
