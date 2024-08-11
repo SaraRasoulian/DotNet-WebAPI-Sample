@@ -4,7 +4,9 @@ using Microsoft.AspNetCore.TestHost;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Hosting;
 using Infrastructure.DbContexts;
+using NodaTime.TimeZones;
 using Testcontainers.PostgreSql;
+using Testcontainers.Redis;
 
 namespace Application.Tests.Integration;
 
@@ -17,30 +19,36 @@ public class IntegrationTestWebApplicationFactory : WebApplicationFactory<Progra
         .WithPassword("mysecretpassword")
         .Build();
 
+    private readonly RedisContainer _redisContainer = new RedisBuilder()
+        .WithImage("redis:latest")
+        .Build();
+
     public async Task InitializeAsync()
     {
         await _dbContainer.StartAsync();
+        await _redisContainer.StartAsync();
 
         using (var scope = Services.CreateScope())
         {
             var scopedServices = scope.ServiceProvider;
-            var cntx = scopedServices.GetRequiredService<CustomerLoyaltyDBContext>();
+            var dbContext = scopedServices.GetRequiredService<CustomerLoyaltyDBContext>();
 
-            await cntx.Database.EnsureCreatedAsync();
+            await dbContext.Database.EnsureCreatedAsync();
         }
     }
 
     public new async Task DisposeAsync()
     {
         await _dbContainer.StopAsync();
+        await _redisContainer.StopAsync();
     }
 
     protected override void ConfigureWebHost(IWebHostBuilder builder)
     {
         builder.ConfigureTestServices(services =>
         {
+            // config for postgres
             var descriptor = services.SingleOrDefault(s => s.ServiceType == typeof(DbContextOptions<CustomerLoyaltyDBContext>));
-
             if (descriptor is not null)
             {
                 services.Remove(descriptor);
@@ -49,6 +57,12 @@ public class IntegrationTestWebApplicationFactory : WebApplicationFactory<Progra
             services.AddDbContext<CustomerLoyaltyDBContext>(options =>
             {
                 options.UseNpgsql(_dbContainer.GetConnectionString());
+            });
+
+            // config for Redis
+            services.AddStackExchangeRedisCache(options =>
+            {
+                options.Configuration = _redisContainer.GetConnectionString();
             });
         });
     }
