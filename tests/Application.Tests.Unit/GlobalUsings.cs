@@ -1,1 +1,9 @@
 global using Xunit;
+global using Application.Users.Handlers.QueryHandlers;
+global using Application.Users.Queries;
+global using Application.Users.Commands;
+global using Application.Users.Handlers.CommandHandlers;
+global using Domain.Entities;
+global using Domain.Interfaces;
+global using Moq;
+global using FluentAssertions;

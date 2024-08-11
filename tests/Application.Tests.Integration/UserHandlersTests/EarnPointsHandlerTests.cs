@@ -1,11 +1,8 @@
-﻿using Application.Users.Commands;
-using FluentAssertions;
+﻿namespace Application.Tests.Integration.UserHandlersTests;
 
-namespace Application.Tests.Integration.UserHandlersTests;
-
-public class UserHandlersTests : BaseHandlerTest
+public class EarnPointsHandlerTests : BaseHandlerTest
 {
-    public UserHandlersTests(IntegrationTestWebApplicationFactory factory) : base(factory) { }
+    public EarnPointsHandlerTests(IntegrationTestWebApplicationFactory factory) : base(factory) { }
 
     [Fact]
     public async void EarnPointsCommand_Returns_PointsBalance()

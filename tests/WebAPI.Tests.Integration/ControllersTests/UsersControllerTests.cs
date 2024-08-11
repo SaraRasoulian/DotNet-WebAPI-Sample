@@ -1,9 +1,4 @@
-﻿using Application.RequestModels;
-using Application.Tests.Integration;
-using System.Net.Http.Json;
-using FluentAssertions;
-
-namespace WebAPI.Tests.Integration.ControllersTests;
+﻿namespace WebAPI.Tests.Integration.ControllersTests;
 
 public class UsersControllerTests : BaseControllerTest
 {

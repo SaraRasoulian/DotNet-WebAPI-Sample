@@ -1,9 +1,4 @@
-﻿using Application.Users.Commands;
-using Application.Users.Handlers.CommandHandlers;
-using Domain.Entities;
-using Domain.Interfaces;
-using Microsoft.Extensions.Logging;
-using Moq;
+﻿using Microsoft.Extensions.Logging;
 
 namespace Application.Tests.Unit.UserHandlersTests;
 

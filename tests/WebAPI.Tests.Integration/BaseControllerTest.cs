@@ -1,7 +1,4 @@
-﻿using Application.RequestModels;
-using Application.Tests.Integration;
-using System.Net.Http.Headers;
-using System.Net.Http.Json;
+﻿using System.Net.Http.Headers;
 
 namespace WebAPI.Tests.Integration;
 

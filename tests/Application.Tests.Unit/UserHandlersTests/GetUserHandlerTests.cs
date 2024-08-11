@@ -1,11 +1,4 @@
-﻿using Application.Users.Handlers.QueryHandlers;
-using Application.Users.Queries;
-using Domain.Entities;
-using Domain.Interfaces;
-using Moq;
-using FluentAssertions;
-
-namespace Application.Tests.Unit.UserHandlersTests;
+﻿namespace Application.Tests.Unit.UserHandlersTests;
 
 public class GetUserHandlerTests
 {
